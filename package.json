@@ -1,6 +1,6 @@
 {
   "name": "apollo4-cache-persist",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Simple persistence for all Apollo cache implementations",
   "author": "Varnit Goyal <varnitgoyal95@gmail.com>",
   "contributors": [
