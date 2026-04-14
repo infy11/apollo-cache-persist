@@ -9,4 +9,5 @@ npm-debug.log
 .omc/*
 .yarn/*
 .idea/*
-.vsconde/*
+.vscode/*
+.omc/*
