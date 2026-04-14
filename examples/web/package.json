@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@apollo/client": "^3.9.9",
-    "apollo3-cache-persist": "file:../../lib",
+    "@apollo/client": "^4.1.7",
+    "apollo4-cache-persist": "file:../../lib",
     "graphql": "^16.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -24,6 +24,6 @@
   },
   "packageManager": "yarn@4.1.1",
   "resolutions": {
-    "apollo3-cache-persist": "portal:../.."
+    "apollo4-cache-persist": "portal:../.."
   }
 }

@@ -5,14 +5,14 @@ import Log from './Log';
 import Persistor from './Persistor';
 import { ApolloPersistOptions, TriggerUninstallFunction } from './types';
 
-export interface TriggerConfig<T> {
-  log: Log<T>;
-  persistor: Persistor<T>;
+export interface TriggerConfig {
+  log: Log;
+  persistor: Persistor;
 }
 
-export default class Trigger<T> {
+export default class Trigger {
   debounce: number;
-  persistor: Persistor<T>;
+  persistor: Persistor;
   paused: boolean;
   timeout: any;
   uninstall: TriggerUninstallFunction;
@@ -20,8 +20,8 @@ export default class Trigger<T> {
   static defaultDebounce = 1000;
 
   constructor(
-    { log, persistor }: TriggerConfig<T>,
-    options: Pick<ApolloPersistOptions<T>, 'cache' | 'debounce' | 'trigger'>,
+    { log, persistor }: TriggerConfig,
+    options: Pick<ApolloPersistOptions, 'cache' | 'debounce' | 'trigger'>,
   ) {
     const { defaultDebounce } = Trigger;
     const { cache, debounce, trigger = 'write' } = options;

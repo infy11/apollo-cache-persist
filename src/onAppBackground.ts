@@ -3,12 +3,12 @@ import { ApolloCache } from '@apollo/client/core';
 import Log from './Log';
 import onCacheWrite from './onCacheWrite';
 
-export interface TriggerFunctionConfig<T> {
-  log: Log<T>;
+export interface TriggerFunctionConfig {
+  log: Log;
   cache: ApolloCache;
 }
 
-export default <T>({ log, cache }: TriggerFunctionConfig<T>) => (
+export default ({ log, cache }: TriggerFunctionConfig) => (
   persist: () => void,
 ) => {
   log.warn(

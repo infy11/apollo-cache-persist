@@ -6,14 +6,14 @@ import Trigger from './Trigger';
 
 import { ApolloPersistOptions, LogLine } from './types';
 
-export default class CachePersistor<T> {
-  log: Log<T>;
-  cache: Cache<T>;
-  storage: Storage<T>;
-  persistor: Persistor<T>;
-  trigger: Trigger<T>;
+export default class CachePersistor {
+  log: Log;
+  cache: Cache;
+  storage: Storage;
+  persistor: Persistor;
+  trigger: Trigger;
 
-  constructor(options: ApolloPersistOptions<T>) {
+  constructor(options: ApolloPersistOptions) {
     if (!options.cache) {
       throw new Error(
         'In order to persist your Apollo Cache, you need to pass in a cache. ' +
@@ -29,7 +29,7 @@ export default class CachePersistor<T> {
     }
 
     const log = new Log(options);
-    const cache = new Cache<T>(options);
+    const cache = new Cache(options);
     const storage = new Storage(options);
     const persistor = new Persistor({ log, cache, storage }, options);
     const trigger = new Trigger({ log, persistor }, options);
@@ -37,9 +37,9 @@ export default class CachePersistor<T> {
     this.log = log;
     this.cache = cache;
     // TODO: remove type assertion
-    this.storage = storage as Storage<T>;
-    this.persistor = persistor as Persistor<T>;
-    this.trigger = trigger as Trigger<T>;
+    this.storage = storage as Storage;
+    this.persistor = persistor as Persistor;
+    this.trigger = trigger as Trigger;
   }
 
   /**

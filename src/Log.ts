@@ -1,13 +1,13 @@
 import { ApolloPersistOptions, LogLevel, LogLine } from './types';
 
-export default class Log<T> {
+export default class Log {
   debug: boolean;
   lines: Array<LogLine>;
 
   static buffer = 30;
   static prefix = '[apollo-cache-persist]';
 
-  constructor(options: Pick<ApolloPersistOptions<T>, 'debug'>) {
+  constructor(options: Pick<ApolloPersistOptions, 'debug'>) {
     const { debug = false } = options;
 
     this.debug = debug;

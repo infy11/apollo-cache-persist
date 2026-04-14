@@ -19,7 +19,7 @@ export class MMKVStorageWrapper implements PersistentStorage<string | null> {
   }
 
   getItem(key: string): Promise<string | null> {
-    return this.storage.getItem(key) || null;
+    return Promise.resolve(this.storage.getItem(key)).then(value => value || null);
   }
 
   removeItem(key: string): Promise<void> {

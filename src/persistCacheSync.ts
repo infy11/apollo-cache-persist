@@ -9,7 +9,7 @@ import Storage from './Storage';
  * @see SynchronousCachePersistor for advanced use cases
  * @param options options for persist engine
  */
-export const persistCacheSync = <T>(options: ApolloPersistOptions<T>) => {
+export const persistCacheSync = (options: ApolloPersistOptions) => {
   const cachePersistor = new SynchronousCachePersistor(options);
   cachePersistor.restoreSync();
 };
@@ -17,10 +17,10 @@ export const persistCacheSync = <T>(options: ApolloPersistOptions<T>) => {
 /**
  * Persistor engine that is going to use synchronous api
  */
-export class SynchronousCachePersistor<T> extends CachePersistor<T> {
-  persistor: SynchronousPersistor<T>;
+export class SynchronousCachePersistor extends CachePersistor {
+  persistor: SynchronousPersistor;
 
-  constructor(options: ApolloPersistOptions<T>) {
+  constructor(options: ApolloPersistOptions) {
     super(options);
 
     this.storage = new SynchronousStorage(options);
@@ -35,12 +35,12 @@ export class SynchronousCachePersistor<T> extends CachePersistor<T> {
   }
 }
 
-export class SynchronousPersistor<T> extends Persistor<T> {
-  storage: SynchronousStorage<T>;
+export class SynchronousPersistor extends Persistor {
+  storage: SynchronousStorage;
 
   constructor(
-    { log, cache, storage }: PersistorConfig<T>,
-    options: ApolloPersistOptions<T>,
+    { log, cache, storage }: PersistorConfig,
+    options: ApolloPersistOptions,
   ) {
     super({ log, cache, storage }, options);
   }
@@ -50,8 +50,8 @@ export class SynchronousPersistor<T> extends Persistor<T> {
   }
 }
 
-export class SynchronousStorage<T> extends Storage<T> {
-  constructor(options: ApolloPersistOptions<T>) {
+export class SynchronousStorage extends Storage {
+  constructor(options: ApolloPersistOptions) {
     super(options);
   }
 

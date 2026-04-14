@@ -1,19 +1,19 @@
 import { ApolloCache } from '@apollo/client/core';
 import { ApolloPersistOptions, PersistedData } from './types';
 
-export default class Cache<T> {
+export default class Cache {
   cache: ApolloCache;
   serialize: boolean;
 
-  constructor(options: Pick<ApolloPersistOptions<T>, 'cache' | 'serialize'>) {
+  constructor(options: Pick<ApolloPersistOptions, 'cache' | 'serialize'>) {
     const { cache, serialize = true } = options;
 
     this.cache = cache;
     this.serialize = serialize;
   }
 
-  extract(): PersistedData<T> {
-    let data: PersistedData<T> = this.cache.extract() as T;
+  extract(): PersistedData {
+    let data: PersistedData = this.cache.extract() as any;
 
     if (this.serialize) {
       data = JSON.stringify(data) as string;
@@ -22,13 +22,13 @@ export default class Cache<T> {
     return data;
   }
 
-  restore(data: PersistedData<T>): void {
+  restore(data: PersistedData): void {
     if (this.serialize && typeof data === 'string') {
       data = JSON.parse(data);
     }
 
     if (data != null) {
-      this.cache.restore(data as T);
+      this.cache.restore(data);
     }
   }
 }
