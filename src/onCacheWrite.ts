@@ -1,7 +1,7 @@
 import { ApolloCache } from '@apollo/client/core';
 
 export interface TriggerFunctionConfig<T> {
-  cache: ApolloCache<T>;
+  cache: ApolloCache;
 }
 
 export default <T>({ cache }: TriggerFunctionConfig<T>) => (

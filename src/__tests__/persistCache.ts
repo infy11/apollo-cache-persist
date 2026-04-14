@@ -52,6 +52,7 @@ describe('persistCache', () => {
         operation,
         result,
         persistOptions: {
+          //@ts-ignore
           cache: new Hermes(),
         },
       });
@@ -104,6 +105,7 @@ describe('persistCache', () => {
         operation,
         result,
         persistOptions: {
+          //@ts-ignore
           cache: new Hermes(),
         },
       });
@@ -170,7 +172,7 @@ describe('persistCache', () => {
       jest.advanceTimersByTime(1001);
       expect(await storage.getItem('apollo-cache-persist')).toBe(undefined);
     });
-    xit('setting the trigger to background persists in the background', () => {});
+    xit('setting the trigger to background persists in the background', () => { });
     it('passing a persistence mapper properly maps the persisted cache', async () => {
       const storage = new MockStorage();
 
@@ -195,21 +197,23 @@ describe('persistCache', () => {
         }
       `;
 
-      const mappableResult = { data: {
-        user: {
-          id: 1,
-          first: 'Jane',
-          last: 'Doe',
-          __typename: 'User',
-        },
-        posts: [
-          {
+      const mappableResult = {
+        data: {
+          user: {
             id: 1,
-            title: 'Apollo is awesome',
-            __typename: 'Post',
+            first: 'Jane',
+            last: 'Doe',
+            __typename: 'User',
           },
-        ],
-      }};
+          posts: [
+            {
+              id: 1,
+              title: 'Apollo is awesome',
+              __typename: 'Post',
+            },
+          ],
+        }
+      };
 
       await simulateWrite({
         result: mappableResult,
