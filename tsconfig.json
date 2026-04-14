@@ -7,19 +7,16 @@
     "noUnusedParameters": false,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "moduleResolution": "nodenext",
+    "moduleResolution": "bundler",
     "removeComments": true,
     "sourceMap": true,
     "declaration": true,
     "target": "es2020",
-    "module": "nodenext",
+    "module": "ESNext",
+    "esModuleInterop": true,
     "lib": [
-      "es2020"
+      "ES2020"
     ],
-    "types": [
-      "node",
-      "jest"
-    ]
   },
   "include": [
     "src/**/*.ts"
@@ -27,6 +24,7 @@
   "exclude": [
     "src/**/__tests__/*.ts",
     "src/**/__mocks__/*.ts",
-    "node_modules"
+    "node_modules",
+    "examples/**/*"
   ]
 }

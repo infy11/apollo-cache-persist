@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "lib/cjs",
-    "module": "nodenext"
+    "module": "nodenext",
+    "moduleResolution": "nodenext"
   }
 }

@@ -10,7 +10,7 @@ export type TriggerFunction = (persist: () => void) => TriggerUninstallFunction;
 
 export type PersistenceMapperFunction = (data: any) => Promise<any>;
 
-export type PersistedData<T> = T | string | null;
+export type PersistedData = string | null;
 
 export interface PersistentStorage<T> {
   getItem: (key: string) => Promise<T | null> | T | null;
@@ -23,11 +23,10 @@ type StorageType<T, TSerialize extends boolean> = TSerialize extends true
   : PersistentStorage<T>;
 
 export interface ApolloPersistOptions<
-  TSerialized,
   TSerialize extends boolean = true
 > {
   cache: ApolloCache;
-  storage: StorageType<PersistedData<TSerialized>, TSerialize>;
+  storage: StorageType<PersistedData, TSerialize>;
   trigger?: 'write' | 'background' | TriggerFunction | false;
   debounce?: number;
   key?: string;

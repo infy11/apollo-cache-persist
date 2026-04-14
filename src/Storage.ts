@@ -4,22 +4,22 @@ import {
   PersistedData,
 } from './types';
 
-export default class Storage<T> {
-  storage: PersistentStorage<PersistedData<T>>;
+export default class Storage {
+  storage: PersistentStorage<PersistedData>;
   key: string;
 
-  constructor(options: Pick<ApolloPersistOptions<T>, 'storage' | 'key'>) {
+  constructor(options: Pick<ApolloPersistOptions, 'storage' | 'key'>) {
     const { storage, key = 'apollo-cache-persist' } = options;
 
     this.storage = storage;
     this.key = key;
   }
 
-  async read(): Promise<PersistedData<T>> {
+  async read(): Promise<PersistedData> {
     return this.storage.getItem(this.key);
   }
 
-  async write(data: PersistedData<T>): Promise<void> {
+  async write(data: PersistedData): Promise<void> {
     await this.storage.setItem(this.key, data);
   }
 

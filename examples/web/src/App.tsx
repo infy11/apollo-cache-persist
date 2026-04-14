@@ -1,15 +1,14 @@
-import {useCallback, useEffect, useState} from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 
 import {
   ApolloClient,
-  ApolloProvider,
-  NormalizedCacheObject,
-  useQuery,
+  HttpLink,
+  InMemoryCache,
 } from '@apollo/client';
+import { useQuery, ApolloProvider } from '@apollo/client/react'
 import gql from 'graphql-tag';
-import { InMemoryCache } from '@apollo/client/core';
-import { CachePersistor, LocalStorageWrapper } from 'apollo3-cache-persist';
+import { CachePersistor, LocalStorageWrapper } from 'apollo4-cache-persist';
 import styles from './App.module.css';
 
 const episodesGQL = gql`
@@ -28,10 +27,10 @@ const episodesGQL = gql`
 type EpisodesQuery = {
   episodes: {
     results: {
-        episode: string;
-        id: string;
-        name: string;
-        air_date: string;
+      episode: string;
+      id: string;
+      name: string;
+      air_date: string;
     }[];
   }
 };
@@ -70,16 +69,18 @@ const Launches = () => {
 };
 
 const App = () => {
-  const [client, setClient] = useState<ApolloClient<NormalizedCacheObject>>();
+  const [client, setClient] = useState<ApolloClient | null>(null);
   const [persistor, setPersistor] = useState<
-    CachePersistor<NormalizedCacheObject>
-  >();
+    CachePersistor | null
+  >(null);
 
   useEffect(() => {
     async function init() {
+      // Create a single cache instance to be shared
       const cache = new InMemoryCache();
+
       let newPersistor = new CachePersistor({
-        cache,
+        cache: cache as any, // Type cast to handle version mismatch
         storage: new LocalStorageWrapper(window.localStorage),
         debug: true,
         trigger: 'write',
@@ -88,8 +89,8 @@ const App = () => {
       setPersistor(newPersistor);
       setClient(
         new ApolloClient({
-          uri: 'https://rickandmortyapi.com/graphql',
-          cache,
+          link: new HttpLink({ uri: "https://rickandmortyapi.com/graphql" }),
+          cache: cache, // Use the same cache instance
         }),
       );
     }

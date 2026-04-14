@@ -1550,8 +1550,8 @@ __metadata:
     uglify-js: "npm:3.17.4"
     vitest: "npm:^4.1.4"
   peerDependencies:
-    "@apollo/client": "*"
-    react-native: "*"
+    "@apollo/client": ^3.0.0 || ^4.0.0
+    react-native: ^0.60.0
     rxjs: ^7.0.0
   languageName: unknown
   linkType: soft

@@ -4,23 +4,23 @@ import Cache from './Cache';
 
 import { ApolloPersistOptions, PersistenceMapperFunction } from './types';
 
-export interface PersistorConfig<T> {
-  log: Log<T>;
-  cache: Cache<T>;
-  storage: Storage<T>;
+export interface PersistorConfig {
+  log: Log;
+  cache: Cache;
+  storage: Storage;
 }
 
-export default class Persistor<T> {
-  log: Log<T>;
-  cache: Cache<T>;
-  storage: Storage<T>;
+export default class Persistor {
+  log: Log;
+  cache: Cache;
+  storage: Storage;
   maxSize?: number;
   paused: boolean;
   persistenceMapper?: PersistenceMapperFunction;
 
   constructor(
-    { log, cache, storage }: PersistorConfig<T>,
-    options: Pick<ApolloPersistOptions<T>, 'maxSize' | 'persistenceMapper'>,
+    { log, cache, storage }: PersistorConfig,
+    options: Pick<ApolloPersistOptions, 'maxSize' | 'persistenceMapper'>,
   ) {
     const { maxSize = 1024 * 1024, persistenceMapper } = options;
 
