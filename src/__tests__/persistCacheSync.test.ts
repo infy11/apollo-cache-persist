@@ -1,4 +1,5 @@
-import { SynchronousCachePersistor } from '../';
+import { describe, it, expect, vi } from 'vitest';
+import { SynchronousCachePersistor } from '..';
 import MockStorageSync from '../__mocks__/MockStorageSync';
 import {
   ApolloClient,
@@ -9,8 +10,6 @@ import {
 import gql from 'graphql-tag';
 import { ApolloPersistOptions } from '../types';
 import {of} from 'rxjs'
-
-jest.useFakeTimers();
 describe('persistCacheSync', () => {
   describe('setup', () => {
     it('persists cache', async () => {
@@ -35,7 +34,7 @@ describe('persistCacheSync', () => {
       expect(cache.extract()).toEqual({});
 
       await client.query({ query: operation });
-      jest.advanceTimersByTime(
+      vi.advanceTimersByTime(
         persistOptions.debounce ? persistOptions.debounce + 1 : 1001,
       );
 

@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import {
   ApolloClient,
   ApolloLink,
@@ -24,11 +25,11 @@ export const simulateApp = async <T>({
 
   await persistCache({ ...persistOptions, cache, storage });
 
-  const link = new ApolloLink(() => of(result));
+  const link = new ApolloLink(() => of(result as any));
   const client = new ApolloClient({ cache, link });
 
   await client.query({ query: operation });
-  jest.advanceTimersByTime(
+  vi.advanceTimersByTime(
     persistOptions.debounce ? persistOptions.debounce + 1 : 1001,
   );
 
@@ -55,7 +56,7 @@ export const simulateWrite = async <T>({
 
   await persistCache({ ...persistOptions, cache, storage });
 
-  const link = new ApolloLink(() => of(result));
+  const link = new ApolloLink(() => of(result as any));
   const client = new ApolloClient({ cache, link });
   await client.query({ query: operation });
 };

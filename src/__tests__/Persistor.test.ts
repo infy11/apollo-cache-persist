@@ -1,3 +1,4 @@
+import { describe, it, expect, vi } from 'vitest';
 import MockStorage from '../__mocks__/MockStorage';
 import MockCache from '../__mocks__/MockCache';
 import Persistor from '../Persistor';
@@ -7,7 +8,7 @@ import Log from '../Log';
 describe('Persistor', () => {
   const cache = new MockCache({ serialize: false });
   const storage = new Storage({ storage: new MockStorage() });
-  jest.spyOn(storage, 'write');
+  vi.spyOn(storage, 'write');
   const persistor = new Persistor(
     {
       log: new Log({ debug: false }),
