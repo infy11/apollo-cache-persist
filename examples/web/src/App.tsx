@@ -80,7 +80,7 @@ const App = () => {
       const cache = new InMemoryCache();
 
       let newPersistor = new CachePersistor({
-        cache: cache as any, // Type cast to handle version mismatch
+        cache: cache as any,
         storage: new LocalStorageWrapper(window.localStorage),
         debug: true,
         trigger: 'write',

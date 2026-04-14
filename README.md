@@ -43,7 +43,7 @@ short debounce interval).
 ```js
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { InMemoryCache } from '@apollo/client/core';
-import { persistCache, AsyncStorageWrapper } from 'apollo3-cache-persist';
+import { persistCache, AsyncStorageWrapper } from 'apollo4-cache-persist';
 
 const cache = new InMemoryCache({...});
 
@@ -65,7 +65,7 @@ const client = new ApolloClient({
 
 ```js
 import { InMemoryCache } from '@apollo/client/core';
-import { persistCache, LocalStorageWrapper } from 'apollo3-cache-persist';
+import { persistCache, LocalStorageWrapper } from 'apollo4-cache-persist';
 
 const cache = new InMemoryCache({...});
 
@@ -93,6 +93,7 @@ Want to make the project better? Awesome! Please read through our [Contributing 
 
 We all do this for free... so please be nice 😁.
 
+- [@infy11](https://github.com/infy11)
 - [@wtrocki](https://github.com/wtrocki)
 - [@wodCZ](https://github.com/wodCZ)
 - [@jspizziri](https://github.com/jspizziri)
