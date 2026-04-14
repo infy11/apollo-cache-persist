@@ -1,9 +1,10 @@
 {
-  "name": "apollo3-cache-persist",
-  "version": "0.15.0",
+  "name": "apollo4-cache-persist",
+  "version": "1.0.2",
   "description": "Simple persistence for all Apollo cache implementations",
-  "author": "James Reggio <james.reggio@gmail.com>",
+  "author": "Varnit Goyal <varnitgoyal95@gmail.com>",
   "contributors": [
+    "Varnit Goyal <varnitgoyal95@gmail.com>",
     "James Reggio <james.reggio@gmail.com>",
     "Peggy Rayzis <peggy@meteor.com>"
   ],
@@ -14,10 +15,10 @@
   "typings": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/apollographql/apollo-cache-persist.git"
+    "url": "git+https://github.com/infy11/apollo-cache-persist#.git"
   },
-  "homepage": "https://github.com/apollographql/apollo-cache-persist#readme",
-  "bugs": "https://github.com/apollographql/apollo-cache-persist/issues",
+  "homepage": "https://github.com/infy11/apollo-cache-persist#readme",
+  "bugs": "https://github.com/infy11/apollo-cache-persist/issues",
   "scripts": {
     "version": "yarn run changelog && git add CHANGELOG.md",
     "postversion": "yarn run publish:git && yarn run publish:npm",
@@ -66,10 +67,11 @@
     "preset": "ts-jest"
   },
   "peerDependencies": {
-    "@apollo/client": "^3.7.17"
+    "@apollo/client": "*",
+    "rxjs": "^7.0.0"
   },
   "devDependencies": {
-    "@apollo/client": "3.9.9",
+    "@apollo/client": "4.1.7",
     "@types/jest": "29.5.12",
     "@types/node": "20.11.30",
     "@types/react-native": "0.73.0",
@@ -87,6 +89,7 @@
     "react": "18.2.0",
     "rimraf": "5.0.5",
     "rollup": "4.13.0",
+    "rxjs": "7.8.0",
     "ts-jest": "29.1.2",
     "typescript": "5.4.3",
     "uglify-js": "3.17.4"

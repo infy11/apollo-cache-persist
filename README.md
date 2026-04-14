@@ -1,13 +1,12 @@
-# apollo3-cache-persist [![npm version](https://badge.fury.io/js/apollo3-cache-persist.svg)](https://badge.fury.io/js/apollo3-cache-persist) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+# apollo4-cache-persist
 
-Simple persistence for all Apollo Client 3.0 cache implementations, including
+Simple persistence for all Apollo Client 3.0 and 4.0 cache implementations, including
 [`InMemoryCache`][0] and [`Hermes`][1].
 
 Supports web and React Native. [See all storage providers.](./docs/storage-providers.md)
 
 [0]: https://github.com/apollographql/apollo-client/tree/master/src/cache/inmemory
 [1]: https://github.com/convoyinc/apollo-cache-hermes
-
 
 - [Basic Usage](#basic-usage)
   - [React Native](#react-native)

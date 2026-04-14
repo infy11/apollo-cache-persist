@@ -2,13 +2,13 @@ import { SynchronousCachePersistor } from '../';
 import MockStorageSync from '../__mocks__/MockStorageSync';
 import {
   ApolloClient,
-  Observable,
   ApolloLink,
   InMemoryCache,
   NormalizedCacheObject,
 } from '@apollo/client/core';
 import gql from 'graphql-tag';
 import { ApolloPersistOptions } from '../types';
+import {of} from 'rxjs'
 
 jest.useFakeTimers();
 describe('persistCacheSync', () => {
@@ -30,7 +30,7 @@ describe('persistCacheSync', () => {
       // @ts-ignore
       const cachePersistor = new SynchronousCachePersistor(persistOptions);
 
-      const link = new ApolloLink(() => Observable.of(result));
+      const link = new ApolloLink(() => of(result));
       const client = new ApolloClient({ cache, link });
       expect(cache.extract()).toEqual({});
 
