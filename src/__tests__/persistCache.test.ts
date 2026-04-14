@@ -1,18 +1,17 @@
+import { describe, it, expect, vi } from 'vitest';
 import { InMemoryCache, gql } from '@apollo/client/core';
 import { Hermes } from 'apollo-cache-hermes';
 
-import { persistCache } from '../';
+import { persistCache } from '..';
 import MockStorage from '../__mocks__/MockStorage';
 import { simulateApp, simulateWrite } from '../__mocks__/simulate';
-
-jest.useFakeTimers();
 describe('persistCache', () => {
   describe('setup', () => {
     it('requires a cache', async () => {
       try {
         // @ts-expect-error cache is required
         await persistCache({ storage: new MockStorage() });
-        fail('invoking persistCache without a cache should throw an error');
+        throw new Error('invoking persistCache without a cache should throw an error');
       } catch (e) {
         expect(() => {
           throw e;
@@ -23,7 +22,7 @@ describe('persistCache', () => {
       try {
         // @ts-expect-error storage is required
         await persistCache({ cache: new InMemoryCache() });
-        fail('invoking persistCache without storage should throw an error');
+        throw new Error('invoking persistCache without storage should throw an error');
       } catch (e) {
         expect(() => {
           throw e;
@@ -47,7 +46,7 @@ describe('persistCache', () => {
       });
       expect(client.extract()).toEqual(client2.extract());
     });
-    xit('extracts a previously filled HermesCache from storage', async () => {
+    it.skip('extracts a previously filled HermesCache from storage', async () => {
       const [client, client2] = await simulateApp({
         operation,
         result,
@@ -100,7 +99,7 @@ describe('persistCache', () => {
       });
       expect(client.extract()).toEqual(client2.extract());
     });
-    xit('extracts a previously filled HermesCache from storage', async () => {
+    it.skip('extracts a previously filled HermesCache from storage', async () => {
       const [client, client2] = await simulateApp({
         operation,
         result,
@@ -132,7 +131,7 @@ describe('persistCache', () => {
       });
 
       expect(await storage.getItem('apollo-cache-persist')).toBe(undefined);
-      jest.advanceTimersByTime(debounce + 1);
+      vi.advanceTimersByTime(debounce + 1);
       expect(await storage.getItem('apollo-cache-persist')).toMatchSnapshot();
     });
     it('passing in key customizes the storage key', async () => {
@@ -145,7 +144,7 @@ describe('persistCache', () => {
         persistOptions: { key, storage },
       });
 
-      jest.advanceTimersByTime(1001);
+      vi.advanceTimersByTime(1001);
       expect(await storage.getItem('apollo-cache-persist')).toBe(undefined);
       expect(await storage.getItem(key)).toMatchSnapshot();
     });
@@ -158,10 +157,10 @@ describe('persistCache', () => {
         persistOptions: { storage, maxSize: 20 },
       });
 
-      jest.advanceTimersByTime(1001);
+      vi.advanceTimersByTime(1001);
       expect(await storage.getItem('apollo-cache-persist')).toMatchSnapshot();
     });
-    xit('setting the trigger to background does not persist on a write', async () => {
+    it.skip('setting the trigger to background does not persist on a write', async () => {
       const storage = new MockStorage();
       await simulateWrite({
         result,
@@ -169,10 +168,10 @@ describe('persistCache', () => {
         persistOptions: { trigger: 'background', storage },
       });
 
-      jest.advanceTimersByTime(1001);
+      vi.advanceTimersByTime(1001);
       expect(await storage.getItem('apollo-cache-persist')).toBe(undefined);
     });
-    xit('setting the trigger to background persists in the background', () => { });
+    it.skip('setting the trigger to background persists in the background', () => { });
     it('passing a persistence mapper properly maps the persisted cache', async () => {
       const storage = new MockStorage();
 
@@ -221,7 +220,7 @@ describe('persistCache', () => {
         persistOptions: { storage, persistenceMapper },
       });
 
-      jest.advanceTimersByTime(1001);
+      vi.advanceTimersByTime(1001);
       // without this line, this test won't pass.
       // see https://github.com/facebook/jest/issues/2157
       await Promise.resolve();

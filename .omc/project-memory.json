@@ -1,0 +1,219 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776159468664,
+  "projectRoot": "/Users/vgoyal/pet/apollo-cache-persist",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "jest",
+        "version": "29.7.0",
+        "category": "testing"
+      },
+      {
+        "name": "react",
+        "version": "18.2.0",
+        "category": "frontend"
+      },
+      {
+        "name": "rollup",
+        "version": "4.60.1",
+        "category": "build"
+      }
+    ],
+    "packageManager": "yarn",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "yarn build",
+    "testCommand": "yarn test",
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {
+      "version": "yarn run changelog && git add CHANGELOG.md",
+      "postversion": "yarn run publish:git && yarn run publish:npm",
+      "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1",
+      "build:browser": "browserify ./lib/bundle.umd.js -o=./lib/bundle.js && npm run minify:browser",
+      "build": "tsc -p . && tsc -p ./tsconfig.cjs.json",
+      "bundle": "rollup -c",
+      "clean": "rimraf lib/* && rimraf coverage/*",
+      "coverage:upload": "codecov",
+      "minify:browser": "uglifyjs -c -m -o ./lib/bundle.min.js -- ./lib/bundle.js",
+      "postbuild": "npm run bundle",
+      "prebuild": "npm run clean",
+      "precommit": "lint-staged",
+      "test": "jest",
+      "test:watch": "jest --watchAll",
+      "coverage": "jest --coverage",
+      "watch": "tsc -w -p .",
+      "publish:git": "git push && git push --tags",
+      "publish:npm": "yarn run build && npm publish --access public",
+      "commit": "cz"
+    }
+  },
+  "conventions": {
+    "namingStyle": "camelCase/PascalCase",
+    "importStyle": "ES modules",
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs",
+      "examples",
+      "lib",
+      "src"
+    ],
+    "gitBranches": {
+      "defaultBranch": "master",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 4,
+      "lastAccessed": 1776159468655,
+      "keyFiles": [
+        "advanced-usage.md",
+        "faq.md",
+        "release.md",
+        "storage-providers.md"
+      ]
+    },
+    "examples": {
+      "path": "examples",
+      "purpose": "Example code",
+      "fileCount": 0,
+      "lastAccessed": 1776159468655,
+      "keyFiles": []
+    },
+    "lib": {
+      "path": "lib",
+      "purpose": "Library code",
+      "fileCount": 38,
+      "lastAccessed": 1776159468659,
+      "keyFiles": [
+        "Cache.d.ts",
+        "Cache.js",
+        "Cache.js.map",
+        "CachePersistor.d.ts",
+        "CachePersistor.js"
+      ]
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 12,
+      "lastAccessed": 1776159468659,
+      "keyFiles": [
+        "Cache.ts",
+        "CachePersistor.ts",
+        "Log.ts",
+        "Persistor.ts",
+        "Storage.ts"
+      ]
+    },
+    "src/__tests__": {
+      "path": "src/__tests__",
+      "purpose": "Test files",
+      "fileCount": 4,
+      "lastAccessed": 1776159468660,
+      "keyFiles": [
+        "Persistor.ts",
+        "Storage.ts",
+        "persistCache.ts"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "src/__tests__/persistCache.ts",
+      "accessCount": 5,
+      "lastAccessed": 1776161551121,
+      "type": "file"
+    },
+    {
+      "path": "src/__mocks__/simulate.ts",
+      "accessCount": 4,
+      "lastAccessed": 1776161669060,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 4,
+      "lastAccessed": 1776161739804,
+      "type": "file"
+    },
+    {
+      "path": "src/__tests__/persistCacheSync.ts",
+      "accessCount": 3,
+      "lastAccessed": 1776161588290,
+      "type": "file"
+    },
+    {
+      "path": "vitest.config.ts",
+      "accessCount": 3,
+      "lastAccessed": 1776161771871,
+      "type": "file"
+    },
+    {
+      "path": "src/__tests__/Persistor.ts",
+      "accessCount": 2,
+      "lastAccessed": 1776161440244,
+      "type": "file"
+    },
+    {
+      "path": "src/__tests__/Storage.ts",
+      "accessCount": 2,
+      "lastAccessed": 1776161476842,
+      "type": "file"
+    },
+    {
+      "path": "src/__mocks__/MockStorageSync.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776159636345,
+      "type": "file"
+    },
+    {
+      "path": "src/__mocks__/MockCache.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776159636404,
+      "type": "file"
+    },
+    {
+      "path": "src/__mocks__/MockStorage.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776159636459,
+      "type": "file"
+    },
+    {
+      "path": "src/__tests__/setup.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776161398596,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
