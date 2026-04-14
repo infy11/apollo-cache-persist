@@ -15,7 +15,7 @@
   "typings": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/infy11/apollo-cache-persist#.git"
+    "url": "git+https://github.com/infy11/apollo-cache-persist.git"
   },
   "homepage": "https://github.com/infy11/apollo-cache-persist#readme",
   "bugs": "https://github.com/infy11/apollo-cache-persist/issues",
