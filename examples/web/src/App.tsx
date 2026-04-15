@@ -121,7 +121,7 @@ const App = () => {
         </div>
         <div className={styles.controls}>
           <h3>Example controls</h3>
-          <p>Use the following buttons to control apollo3-cache-persist.</p>
+          <p>Use the following buttons to control apollo4-cache-persist.</p>
           <p>
             Once you've loaded the initial data, you should see "Loading fresh
             data" followed by the list of cached Launches every time you reload
