@@ -1,3 +1,5 @@
+## [1.0.9](https://github.com/infy11/apollo-cache-persist/compare/v1.0.8...v1.0.9) (2026-04-15)
+
 ## [1.0.8](https://github.com/infy11/apollo-cache-persist/compare/v1.0.7...v1.0.8) (2026-04-15)
 
 ## [1.0.7](https://github.com/infy11/apollo-cache-persist/compare/0.15.0...1.0.7) (2026-04-15)
