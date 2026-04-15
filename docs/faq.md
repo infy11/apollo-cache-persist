@@ -1,10 +1,10 @@
 # Frequently Asked Questions
 
-- [Why is the 'background' trigger only available for React Native?](#why-is-the-background-trigger-only-available-for-React-Native)
+- [Why is the 'background' trigger only available for React Native?](#why-is-the-background-trigger-only-available-for-react-native)
 - [How do I wait for the cache to be restored before rendering my app?](#how-do-i-wait-for-the-cache-to-be-restored-before-rendering-my-app)
 - [React Using Hooks](#react-using-hooks)
 - [Using Synchronous Storage API](#using-synchronous-storage-api)
-- [I need to ensure certain data is not persisted. How do I filter my cache?](#i-need-to-ensure-certain-data-is-not-persisted-how-do-I-filter-my-cache)
+- [I need to ensure certain data is not persisted. How do I filter my cache?](#i-need-to-ensure-certain-data-is-not-persisted-how-do-i-filter-my-cache)
 - [I've had a breaking schema change. How do I migrate or purge my cache?](#ive-had-a-breaking-schema-change-how-do-i-migrate-or-purge-my-cache)
 - [I'm seeing errors on Android.](#im-seeing-errors-on-android)
 - [Cache persist and changing user context](#cache-persist-and-changing-user-context)
@@ -43,7 +43,7 @@ import React, { useEffect, useState } from 'react';
 
 import { ApolloClient, ApolloProvider } from '@apollo/client';
 import { InMemoryCache } from '@apollo/client/core';
-import { LocalStorageWrapper, persistCache } from 'apollo3-cache-persist';
+import { LocalStorageWrapper, persistCache } from 'apollo4-cache-persist';
 
 const App = () => {
   const [client, setClient] = useState();
@@ -88,7 +88,7 @@ apollo-cache-persist offers alternative `persistCacheSync` method that should be
 
 ```js
 import { InMemoryCache } from '@apollo/client/core';
-import { persistCacheSync, LocalStorageWrapper } from 'apollo3-cache-persist';
+import { persistCacheSync, LocalStorageWrapper } from 'apollo4-cache-persist';
 
 const cache = new InMemoryCache({...});
 
@@ -104,11 +104,10 @@ persistCacheSync({
 
 You can optionally pass a `persistenceMapper` function to the `CachePersistor` which
 will allow you to control what parts of the Apollo Client cache get persisted. Please
-refer to the [Advanced Usage of the `CachePersistor`](https://github.com/apollographql/apollo-cache-persist/blob/master/docs/advanced-usage.md#using-cachepersistor) for more
+refer to the [Advanced Usage of the `CachePersistor`](https://github.com/infy11/apollo-cache-persist/blob/master/docs/advanced-usage.md#using-cachepersistor) for more
 details.
 
-Other alternatives have been recommended in
-[#2](https://github.com/apollographql/apollo3-cache-persist/issues/2#issuecomment-350823835),
+
 including using logic in your UI to filter potentially-outdated information.
 Furthermore, the `maxSize` option and methods on `CachePersistor` provide facilities to
 manage the growth of the cache.
@@ -136,7 +135,7 @@ Here's an example of how this could look:
 ```js
 import AsyncStorage from '@react-native-community/async-storage';
 import { InMemoryCache } from '@apollo/client/core';
-import { CachePersistor, AsyncStorageWrapper } from 'apollo3-cache-persist';
+import { CachePersistor, AsyncStorageWrapper } from 'apollo4-cache-persist';
 
 const SCHEMA_VERSION = '3'; // Must be a string.
 const SCHEMA_VERSION_KEY = 'apollo-schema-version';
@@ -167,7 +166,7 @@ async function setupApollo() {
 }
 ```
 
-## I'm seeing errors on Android.
+## I'm seeing errors on Android
 
 Specifically, this error:
 

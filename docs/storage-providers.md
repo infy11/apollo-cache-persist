@@ -7,7 +7,7 @@
 
 ## Natively Supported Providers
 
-`apollo3-cache-persist` provides wrappers for the following storage providers, with no additional dependencies:
+`apollo4-cache-persist` provides wrappers for the following storage providers, with no additional dependencies:
 
 | Storage provider                                                                | Platform       | Wrapper class           |
 | ------------------------------------------------------------------------------- | -------------- | ----------------------- |
@@ -21,7 +21,7 @@
 
 
 ## Redux Persist Providers
-`apollo3-cache-persist` uses the same storage provider API as
+`apollo4-cache-persist` uses the same storage provider API as
 [`redux-persist`](https://github.com/rt2zz/redux-persist), so you can also make
 use of the providers
 [listed here](https://github.com/rt2zz/redux-persist#storage-engines),
@@ -42,7 +42,7 @@ use a different storage provider, such as
 
 ## Using other storage providers
 
-`apollo3-cache-persist` supports stable versions of storage providers mentioned above.
+`apollo4-cache-persist` supports stable versions of storage providers mentioned above.
 If you want to use other storage provider, or there's a breaking change in `next` version of supported provider,
 you can create your own wrapper. For an example of a simple wrapper have a look at [`AsyncStorageWrapper`](/src/storageWrappers/AsyncStorageWrapper.ts).
 

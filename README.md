@@ -5,7 +5,7 @@ Simple persistence for all Apollo Client 3.0 and 4.0 cache implementations, incl
 
 Supports web and React Native. [See all storage providers.](./docs/storage-providers.md)
 
-[0]: https://github.com/apollographql/apollo-client/tree/master/src/cache/inmemory
+[0]: https://github.com/infy11/apollo-client/tree/master/src/cache/inmemory
 [1]: https://github.com/convoyinc/apollo-cache-hermes
 
 - [Basic Usage](#basic-usage)
@@ -20,13 +20,13 @@ Supports web and React Native. [See all storage providers.](./docs/storage-provi
 ## Basic Usage
 
 ```sh
-npm install --save apollo3-cache-persist
+npm install --save apollo4-cache-persist
 ```
 
 or
 
 ```sh
-yarn add apollo3-cache-persist
+yarn add apollo4-cache-persist
 ```
 
 To get started, simply pass your Apollo cache and an
