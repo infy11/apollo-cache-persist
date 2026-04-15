@@ -1,6 +1,6 @@
 {
   "name": "apollo4-cache-persist",
-  "version": "1.0.5",
+  "version": "1.0.10",
   "description": "Simple persistence for all Apollo cache implementations",
   "author": "Varnit Goyal <varnitgoyal95@gmail.com>",
   "contributors": [
@@ -9,10 +9,10 @@
     "Peggy Rayzis <peggy@meteor.com>"
   ],
   "license": "MIT",
-  "main": "./lib/cjs/index.js",
-  "module": "./lib/esm/index.js",
-  "jsnext:main": "./lib/esm/index.js",
-  "typings": "./lib/index.d.ts",
+  "main": "./lib/index.js",
+  "module": "./lib/index.mjs",
+  "jsnext:main": "./lib/index.mjs",
+  "typings": "./lib/index.d.mts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/infy11/apollo-cache-persist.git"
@@ -23,9 +23,7 @@
     "version": "yarn run changelog && git add CHANGELOG.md",
     "postversion": "yarn run publish:git && yarn run publish:npm",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1",
-    "build:browser": "browserify ./lib/bundle.umd.js -o=./lib/bundle.js && npm run minify:browser",
-    "build": "tsc -p ./tsconfig.esm.json && tsc -p . && tsc -p ./tsconfig.cjs.json",
-    "bundle": "rollup -c",
+    "build": "tsdown src/index.ts --minify --format cjs,esm --dts --out-dir lib",
     "clean": "rimraf lib/* && rimraf coverage/*",
     "coverage:upload": "codecov",
     "minify:browser": "uglifyjs -c -m -o ./lib/bundle.min.js -- ./lib/bundle.js",
@@ -49,7 +47,7 @@
   },
   "peerDependencies": {
     "@apollo/client": "^3.0.0 || ^4.0.0",
-    "react-native": "^0.60.0",
+    "react-native": "*",
     "rxjs": "^7.0.0"
   },
   "devDependencies": {
@@ -58,28 +56,32 @@
     "@vitest/coverage-v8": "4.1.4",
     "@vitest/ui": "^4.1.4",
     "apollo-cache-hermes": "0.8.16",
-    "browserify": "17.0.0",
     "codecov": "3.8.3",
     "commitizen": "4.3.0",
+    "conventional-changelog": "^7.2.0",
+    "conventional-changelog-angular": "^8.3.1",
     "cz-conventional-changelog": "3.3.0",
     "graphql": "16.8.1",
     "happy-dom": "^20.9.0",
     "husky": "9.0.11",
     "lint-staged": "15.2.2",
     "prettier": "3.2.5",
-    "react": "18.2.0",
+    "react": "19.2.3",
     "react-native": "*",
     "rimraf": "5.0.5",
-    "rollup": "4.60.1",
     "rxjs": "7.8.0",
+    "tsdown": "0.21.8",
     "typescript": "5.4.3",
-    "uglify-js": "3.17.4",
     "vitest": "^4.1.4"
   },
+  "sideEffects": false,
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "packageManager": "yarn@4.1.1"
+  "packageManager": "yarn@4.1.1",
+  "files": [
+    "lib"
+  ]
 }

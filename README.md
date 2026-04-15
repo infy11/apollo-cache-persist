@@ -1,5 +1,8 @@
 # apollo4-cache-persist
 
+[![npm version](https://badge.fury.io/js/apollo4-cache-persist.svg?icon=si%3Anpm)](https://badge.fury.io/js/apollo4-cache-persist)
+[![alt text](https://deno.bundlejs.com/badge?q=apollo4-cache-persist)](https://deno.bundlejs.com/badge?q=apollo4-cache-persist)
+
 Simple persistence for all Apollo Client 3.0 and 4.0 cache implementations, including
 [`InMemoryCache`][0] and [`Hermes`][1].
 
