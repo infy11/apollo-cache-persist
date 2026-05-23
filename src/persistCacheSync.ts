@@ -18,7 +18,7 @@ export const persistCacheSync = (options: ApolloPersistOptions) => {
  * Persistor engine that is going to use synchronous api
  */
 export class SynchronousCachePersistor extends CachePersistor {
-  persistor: SynchronousPersistor;
+  declare persistor: SynchronousPersistor;
 
   constructor(options: ApolloPersistOptions) {
     super(options);
@@ -36,13 +36,15 @@ export class SynchronousCachePersistor extends CachePersistor {
 }
 
 export class SynchronousPersistor extends Persistor {
-  storage: SynchronousStorage;
+  declare storage: SynchronousStorage;
 
   constructor(
     { log, cache, storage }: PersistorConfig,
     options: ApolloPersistOptions,
   ) {
     super({ log, cache, storage }, options);
+    this.storage = storage as SynchronousStorage;
+
   }
 
   restoreSync() {
